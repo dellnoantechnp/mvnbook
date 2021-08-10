@@ -56,6 +56,6 @@ Maven 用户可以选择配置 `$M2_HOME/conf/settings.xml` 或者 `~/.m2/settin
 推荐设置用户范围级别的 settings.xml。
 ``
 # 6. IDEA 使用外部 Maven
-![pic.png](.pic/70DB931F.png)
+![pic.png](https://github.com/dellnoantechnp/mvnbook/blob/main/Chapter2/.pic/70DB931F.png)
 
 推荐使用外部 Maven，不要使用 IDE 自带的 Maven 。
