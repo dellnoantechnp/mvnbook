@@ -14,13 +14,18 @@
   <name>Maven Hello World Project</name>
 </project>
 ```
-代码第一行是 XML 头，指定了该xml文档的版本和编码方式。
-紧接着是`project`元素，`project`是pom.xml的根元素，它申明了一些 POM 相关的命名空间及 xsd 元素，肃然这些属性不是必须的，但是使用这些属性能够让第三方工具（如IDE中的XML编辑器）帮助我们快速编辑 POM 。
+代码第一行是 xml 头，指定了该xml文档的版本和编码方式。
+紧接着是`project`元素，`project`是pom.xml的根元素，它申明了一些 POM 相关的命名空间及 xsd 元素，虽然这些属性不是必须的，但是使用这些属性能够让第三方工具（如IDE中的XML编辑器）帮助我们快速编辑 POM 。
+
 根元素下的第一个元素`modelVersion`指定了当前 POM 模型的版本，对于 Maven2 及 Maven3 来说，它只能是 **4.0.0**。
 这段代码中**最重要**的是包含`groupId`、`artifactId` 和 `version` 的三行。这三个元素定义了一个项目**基本的坐标**，在 Maven 的世界，任何的 jar、pom 或者 war 都是以基于这些基本的坐标进行区分的。
+
 `groupId` 定义了项目属于哪个组，这个组往往和项目所在的组织或公司存在关联。 譬如在 apache 上建立一个名为 myapp 的项目，那么`groupId`就应该是`com.apache.myapp`。
+
 `artifactId` 定义了当前 Maven 项目在组中唯一的 ID，我们为这个 Hello World 项目定义为`hello-world`。
+
 顾名思义，`version` 指定了 Hello World 项目当前的版本——`1.0-SNAPSHOT`。SNAPSHOT意为快照，说明该项目还处于开发中，是不稳定的版本。随着项目的发展，`version`会不断更新。
+
 最后一个`name`元素声明了一个对于用户更为友好的项目名称，虽然这不是必须的，但还是推荐为每个 POM 声明 `name`，以方便信息交流。
 
 没有任何实际的 Java 代码，我们就能够定义一个 Maven 项目的 POM，这体现了 Maven 的一大优点，它能让项目对象模型最大程度地与实际代码相独立，我们可以称之为解耦，或者正交性。 这在很大程度上避免了 Java 代码和 POM 代码的相互影响。
@@ -32,6 +37,7 @@
 $ mkdir -pv src/main/java
 $ mkdir -pv src/main/java/com/juvenxu/mvbook/helloworld/
 ```
+
 Java 代码如下：
 ```java
 package com.juvenxu.mvnbook.helloworld;
@@ -75,6 +81,7 @@ $ mvn clean compile
 [INFO] Finished at: 2021-08-07T01:49:15+08:00
 [INFO] ------------------------------------------------------------------------
 ```
+
 `clean` 告诉 Maven 清理输出目录`target/`，`compile` 告诉 Maven 编译项目主代码，从输出中看到Maven首先执行了`clean`任务，删除`target/`目录。默认情况下，Maven构建的所有输出都在`target/`目录中； 接着执行`resources`任务； 最后执行`compile`任务，将项目主代码编译至`target/classes`目录。
 ```shell
 $ tree target/
@@ -128,6 +135,7 @@ $ mkdir -pv src/test/java
 </project>
 ```
 代码中添加了`dependencies`元素，该元素下可以包含多个`dependency`元素以声明项目的依赖。 
+
 这里添加了一个依赖 —— `groupId`是`junit`，`artifactId`是`junit`，`version`是`4.7`。 前面提到`groupId`、`artifactId` 和 `verison`是任何一个 Maven 项目最基本的坐标，`JUnit` 也不例外，有了这段声明，Maven 就能够自动下载`junit-4.7.jar`。
 
 上述 POM 代码中还有一个值为 test 的元素`scope`，`scope`为依赖范围，若依赖范围为`test`则表示该依赖只对测试有效。 换句话说，测试代码中的`import JUnit` 代码是没有问题的，但是如果在主代码中使用`import JUnit`代码，就会造成编译错误。 **如果不声明依赖范围，那么默认值就是`compile`，表示该依赖对主代码和测试代码都有效。**
@@ -152,7 +160,8 @@ public class HelloWorldTest {
 ①准备测试类及数据；
 ②执行要测试的行为；
 ③检查结果。
-上述阳历首先初始化了一个要测试的 HelloWorld 实例，接着执行该实例的`sayHello()`方法并保存结果到`result`变量中，最后使用`JUnit`框架的`Assert`类检查结果是否为我们期望的`Hello Maven!`。 
+上述样例首先初始化了一个要测试的 HelloWorld 实例，接着执行该实例的`sayHello()`方法并保存结果到`result`变量中，最后使用`JUnit`框架的`Assert`类检查结果是否为我们期望的`Hello Maven!`。 
+
 在 JUnit3 中，约定所需要执行测试的的方法都以 `test` 开头，这里使用了`JUnit4`，但仍然遵循这一约定。 **在 JUnit4 中，需要执行的测试方法都应该以`@Test` 进行标注。**
 
 测试用例编写完毕之后就可以调用`Maven` 执行测试。运行`mvn clean test`:
@@ -295,6 +304,7 @@ Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
 ......
 ```
 至此，我们在打包工作之后，又执行了安装的任务`install`。从输出可以看到该任务将项目输出的 jar 安装到了 Maven 本地仓库中，可以打开相应的文件夹看到`Hello World`项目的 pom 和 jar。 
+
 之前讲述 **JUnit** 的 POM 及 jar 的下载的时候，我们说只有构件被下载到本地仓库后，才能由所有 Maven 项目使用，这里是同样的道理，只有将 `Hello World` 的构件安装到本地仓库之后，其他 Maven 项目才能使用它。
 
 我们已经体验了 Maven 最主要的命令：`mvn clean compile`、`mvn clean test`、`mvn clean package`、`mvn clean install`。 
@@ -329,8 +339,11 @@ Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
   </build>
 ..........
 ```
+
 `plugin`元素在POM中相对位置应该在`<project>`下的`<build>`下的`<plugins>`下面。
+
 我们配置了`mainClass`为`com.juvenxu.mvnbook.helloworld.HelloWorld`，项目在打包时会将该信息放到`MANIFEST`中。 
+
 现在执行`mvn clean install`，待构建完成之后打开`target/`目录，可以看到`hello-world-1.0-SNAPSHOT.jar` 和`original-hello-world-1.0-SNAPSHOT.jar`，前者是带有`Main-Class`信息的**可运行`jar`** ，后者是原始的`jar`，打开`hello-world-1.0-SNAPSHOT.jar` 的`META-INF/MANIFEST.MF`，可以看到它包含这样一行信息：
 ```text
 Main-Class: com.juvenxu.mvnbook.helloworld.HelloWorld
@@ -344,8 +357,10 @@ Hello Maven!
 
 # 5. 使用 Archetype 生成项目骨架
 Hello World 项目中有一些 Maven 的约定：在项目的根目录中放置 pom.xml，在`src/main/java`目录中存放项目的主代码，在`src/test/java`中放置项目的测试代码。
+
 我们称这些基本的目录结构和 pom.xml 文件内容称为项目的骨架。
 Maven 提供了 `Archetype` 以帮助我们快速勾勒出项目骨架。
+
 ```shell
 ### Maven2
 $ mvn org.apache.maven.plugins:maven-archetype-plugin:2.0-alpha-5:generate
@@ -384,7 +399,9 @@ version: 1.0-SNAPSHOT
 package: com.juvenxu.mvnbook.helloworld
  Y: : Y
 ```
-Archetype 插件根据我们提供的信息创建项目骨架。 在当前目录下，Archetype 插件会创建一个名为`hello-world`（我们定义的artifactId）的子目录，从中可以看到项目的基本结构：基本的 pom.xml 已经被创建，里面包含了必要的信息及一个`junit`依赖；主代码目录`src/main/java`已经被创建，在该目录下还有一个Java类`com.juvenxu.mvnbook.helloworld.App`，注意这里使用到了刚才定义的包名，而这个类也仅仅只有一个简单的输出`Hello World!`的`main`方法； 测试代码目录`src/test/java`也被创建好了，并且包含了一个测试用例`com.juvenxu.mvnbook.helloworld.AppTest`。
+Archetype 插件根据我们提供的信息创建项目骨架。 
+
+在当前目录下，Archetype 插件会创建一个名为`hello-world`（我们定义的artifactId）的子目录，从中可以看到项目的基本结构：基本的 pom.xml 已经被创建，里面包含了必要的信息及一个`junit`依赖；主代码目录`src/main/java`已经被创建，在该目录下还有一个Java类`com.juvenxu.mvnbook.helloworld.App`，注意这里使用到了刚才定义的包名，而这个类也仅仅只有一个简单的输出`Hello World!`的`main`方法； 测试代码目录`src/test/java`也被创建好了，并且包含了一个测试用例`com.juvenxu.mvnbook.helloworld.AppTest`。
 
 Archetype 可以帮助我们迅速地构建起项目的骨架，在前面的例子中，我们完全可以在 Archetype 生成的骨架的基础上开发 Hello World 项目以节省大量时间。
 
