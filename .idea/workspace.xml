@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="account-email:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
@@ -22,16 +27,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="622774c3-05b4-4194-a4af-113b11e7baab" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Java_EE_6_Java_EE_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/account-email/src/main/java/com/juvenxu/mvnbook/account/email/AccountEmailException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+    <list default="true" id="622774c3-05b4-4194-a4af-113b11e7baab" name="Default Changelist" comment="commit code.&#10;fix bug.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/account-email/account-email.iml" beforeDir="false" afterPath="$PROJECT_DIR$/account-email/account-email.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/account-email/src/main/java/com/juvenxu/mvnbook/account/email/AccountEmailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/account-email/src/main/java/com/juvenxu/mvnbook/account/email/AccountEmailService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/account-email/src/main/java/com/juvenxu/mvnbook/account/email/AccountEmailServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/account-email/src/main/java/com/juvenxu/mvnbook/account/email/AccountEmailServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +81,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/account-email" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="fileTemplates" />
@@ -234,7 +231,14 @@
       <option name="project" value="LOCAL" />
       <updated>1628640248592</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="commit code.&#10;fix bug.">
+      <created>1628678799352</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1628678799352</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -268,6 +272,10 @@
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
     <state x="-1480" y="94" key="#Project_Structure/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1628677153017" />
+    <state x="-1001" y="309" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1628679128874">
+      <screen x="-1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="-1001" y="309" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1628679128874" />
     <state x="-1342" y="197" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog" timestamp="1628677355931">
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
@@ -284,10 +292,14 @@
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
     <state x="-1091" y="223" key="NewModule_or_Project.wizard/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1628673796640" />
-    <state x="-1251" y="94" key="SettingsEditor" timestamp="1628676910401">
+    <state x="-1251" y="94" key="SettingsEditor" timestamp="1628679134370">
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="-1251" y="94" key="SettingsEditor/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1628676910401" />
+    <state x="-1251" y="94" key="SettingsEditor/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1628679134370" />
+    <state x="-1368" y="252" key="Vcs.Push.Dialog.v2" timestamp="1628678806203">
+      <screen x="-1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="-1368" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1628678806203" />
     <state x="-1157" y="432" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1628673579066">
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
