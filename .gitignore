@@ -26,8 +26,10 @@ hs_err_pid*
 # IDEA
 .idea/*
 .DS_Store
-!/.idea/mvnbook.iml
-!/.idea/workspace.xml
-!/.idea/modules.xml
-!/.idea/misc.xml
-!/.idea/vcs.xml
+
+### 20210811 add
+#!/.idea/mvnbook.iml
+#!/.idea/workspace.xml
+#!/.idea/modules.xml   避免分享该类文件
+#!/.idea/misc.xml
+#!/.idea/vcs.xml
