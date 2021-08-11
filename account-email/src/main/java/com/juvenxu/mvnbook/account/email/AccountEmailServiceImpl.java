@@ -1,6 +1,6 @@
 package com.juvenxu.mvnbook.account.email;
 
-import javax.mail.MessageingException;
+import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 
 import org.springframework.mail.javamail.JavaMailSender;
@@ -9,7 +9,7 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 public class AccountEmailServiceImpl implements AccountEmailService {
     private JavaMailSender javaMailSender;
     private String systemEmail;
-    public void sendMail(String to, String subject, String hemtText) throws AccountEmailException {
+    public void sendMail(String to, String subject, String htmlText) throws AccountEmailException {
         try {
             MimeMessage msg = javaMailSender.createMimeMessage();
             MimeMessageHelper msgHelper = new MimeMessageHelper(msg);
@@ -20,7 +20,7 @@ public class AccountEmailServiceImpl implements AccountEmailService {
             msgHelper.setText(htmlText, true);
 
             javaMailSender.send(msg);
-        } catch (MessageException e) {
+        } catch (MessagingException e) {
             throw new AccountEmailException("Faild to send mail.", e);
         }
     }
