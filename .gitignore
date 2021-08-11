@@ -24,7 +24,10 @@ hs_err_pid*
 
 
 # IDEA
-#.idea/*
+.idea/*
 .DS_Store
-!.idea/mvnbook.iml
-!.idea/workspace.xml
+!/.idea/mvnbook.iml
+!/.idea/workspace.xml
+!/.idea/modules.xml
+!/.idea/misc.xml
+!/.idea/vcs.xml
