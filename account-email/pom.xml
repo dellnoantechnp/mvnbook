@@ -7,21 +7,27 @@
     <name>Account Email</name>
     <version>1.0.0-SNAPSHOT</version>
 
+    <!-- 归类依赖，Maven 属性定义 -->
+    <properties>
+            <springframework.version>2.5.6</springframework.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
-            <version>2.5.6</version>
+            <!-- 引用属性定义的值 -->
+            <version>${springframework.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-beans</artifactId>
-            <version>2.5.6</version>
+            <version>${springframework.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-            <version>2.5.6</version>
+            <version>${springframework.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -43,6 +49,12 @@
             <artifactId>greenmail</artifactId>
             <version>1.3.1b</version>
             <scope>test</scope>
+<!--            <exclusions>-->
+<!--                <exclusion>-->
+<!--                    <groupId>javax.mail</groupId>-->
+<!--                    <artifactId>mail</artifactId>-->
+<!--                </exclusion>-->
+<!--            </exclusions>-->
         </dependency>
     </dependencies>
 
