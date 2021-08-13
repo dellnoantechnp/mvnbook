@@ -397,14 +397,14 @@ email.systemEmail=your-id@juvenxu.com
 
 上述除 `import` 以外的各种依赖范围与三种 `classpath`  的关系如下表所示：
 
-依赖范围 (Scope) | 对于编译 classpath 有效 | 对于测试 classpath 有效 | 对于运行时 classpath 有效 | 例子
-- | - | - | - | -
-compile | Y | Y | Y |  `spring-core`
-test | — | Y | — | JUnit 
-provided | Y | Y | — | `servlet-api`
-runtime | — | Y | Y | JDBC 驱动实现
-system | Y | Y | — | 本地的，Maven 仓库之外的类库文件
-
+| 依赖范围 (Scope) | 对于编译 classpath 有效 | 对于测试 classpath 有效 | 对于运行时 classpath 有效 | 例子 |
+| -------         | -------                | ------                | ------                  | ---------- |
+|compile          | Y                      | Y                     | Y                       |  `spring-core` |
+|test             | —                      | Y                     | —                       | JUnit |
+|provided         | Y                      | Y                     | —                       | `servlet-api`|
+|runtime          | —                      | Y                     | Y                       | JDBC 驱动实现|
+|system           | Y                      | Y                     | —                       | 本地的，Maven 仓库之外的类库文件|
+                             
 # 6. 传递性依赖
 ## 6.1 何为传递性依赖
 考虑一个基于 Spring Framework 的项目，如果不使用 Maven，那么在项目中就需要手动下载相关依赖。 由于 Spring Framework 又会依赖于其他开源类库，因此实际中往往会下载一个很大的如 spring-framework-2.5.6-with-denpendencies.zip 的包，这里面包含了所有 Spring Framework 的 jar 包，以及所有它依赖的其他 jar 包。这么做往往就引入了很多不必要的依赖。另一种做法是只下载 spring-framework-2.5.6.zip 包，包里不包含其他相关依赖，到实际使用的时候，根据出错信息，查询相关文档，手动加入需要的其他依赖。 很显然，这是一键非常麻烦的事情。
@@ -432,12 +432,12 @@ Maven 的传递性依赖机制可以很好的解决这一问题。以`account-em
 
 **第一直接依赖的范围和第二直接依赖的范围决定了传递性依赖的范围。** 如下表所示，最左边一行表示第一直接依赖范围，最上面一行表示第二直接依赖范围，中间的较差单元格则表示传递性依赖范围。
 
--            | compile  | test | provided | runtime 
-:-:           | :-:          | :-:   | :-:          | :-:
-compile   | compile  | -     | -           | runtime
-test         | test       | -    | -            | test
-provided  | provided | -    | provided | provided
-runtime   | runtime   | -    | -           | runtime
+| -         | compile  | test   | provided | runtime  |
+| :-------: | :------: | :----: | :------: | :-----:  |
+| compile   | compile  | -      | -        | runtime  |
+| test      | test     | -      | -        | test     |
+| provided  | provided | -      | provided | provided |
+| runtime   | runtime  | -      | -        | runtime  |
 
 为了能够帮助读者更好的理解，这里再举个例子。  
 
