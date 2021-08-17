@@ -421,7 +421,7 @@ Maven 的传递性依赖机制可以很好的解决这一问题。以`account-em
 该依赖没有声明依赖范围，那么其依赖范围就是默认的`compile`。 同时回顾一下`accont-email`，`spring-core` 的依赖范围也是`compile`。
 
 `account-email` 有一个`compile` 范围的`spring-core`依赖，`spring-core` 有一个`compile`范围的`commons-logging` 依赖，那么`commons-logging` 就会称为`account-email` 的 `compile` 范围依赖，`commons-logging`是 `account-email` 的一个传递性依赖：
-![1.png](https://github.com/dellnoantechnp/mvnbook/blob/main/Chapter5/.pic/1.png)
+![1.png](https://raw.githubusercontent.com/dellnoantechnp/mvnbook/main/Chapter5/.pic/1.png)
 
 有了传递性依赖机制，在使用 Spring Framework 的时候就不用考虑它依赖了什么，也不用担心引入多余的依赖。 Maven 会解析各个直接依赖的 POM，将那些必要的间接依赖，以传递性依赖的形式引入到当前的项目中。
 
@@ -464,7 +464,7 @@ Maven 引入的传递性依赖机制，一方面大大简化和方便了依赖�
 假设有这样一个依赖关系，项目 A 依赖于项目 B，项目 B 依赖于项目 X 和 Y， B 对于 X 和 Y 的依赖都是可选依赖：`A --> B`、`B --> X(可选)`、`B --> Y(可选)` 。 
 
 根据传递性依赖的定义，如果所有这三个依赖范围都是`compile`，那么 X、Y 就是 A 的 `compile`范围传递性依赖。 **然而，由于这里 X、Y 是可选依赖，依赖将不会得以传递。** 话句话说，X、Y 将不会对 A 有任何影响。
-![2.png](https://github.com/dellnoantechnp/mvnbook/blob/main/Chapter5/.pic/2.png)
+![2.png](https://raw.githubusercontent.com/dellnoantechnp/mvnbook/main/Chapter5/.pic/2.png)
 
 为什么要使用**可选依赖**这一特性呢？ 可能项目 B 实现了两个特性，其中的特性一 依赖于 X，特性二 依赖于 Y，而且这两个特性是互斥的，用户不可能同时使用两个特性。 比如 B 是一个持久层隔离工具包，它支持多种数据库，包括 MySQL、PostgreSQL 等，在构建这个工具包的时候，需要这两种数据库的驱动程序，但是在使用这个工具的时候，只会依赖一种数据库。
 
@@ -569,7 +569,7 @@ Maven 依赖涉及的知识点比较多，在理解了主要的功能和原理�
 
 代码中使用 `<exclusions>` 元素声明排除依赖，`<exclusions>` 可以包含一个或者多个 `<exclusion>` 子元素，因此可以排除一个或者多个传递性依赖。 需要注意的是，声明该子元素的时候只需要 `groupId` 和 `artifactId` ，而不需要 `version` 元素，这是因为只需要`groupId`和 `artifactId` 就能唯一定位依赖图中的某个依赖。   换句话说，Maven 解析后的依赖中，不可能出现 `groupId` 和 `artifactId`相同，但是`version` 不同的两个依赖，这一点在 6小节中已做过解释。
 
-![3.png](https://github.com/dellnoantechnp/mvnbook/blob/main/Chapter5/.pic/3.png)
+![3.png](https://raw.githubusercontent.com/dellnoantechnp/mvnbook/main/Chapter5/.pic/3.png)
 
 
 ## 9.2 归类依赖

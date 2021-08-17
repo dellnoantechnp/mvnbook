@@ -1,5 +1,7 @@
+![Maven 实战](https://img-blog.csdnimg.cn/20181211201923572.png)
+
 # mvnbook
-maven 实战  - 源码 + md讲义 (maven3)
+《Maven 实战》 —— 源码 + 章节讲义 (maven3)
 
 ## [第二章 Maven的安装与配置](Chapter2/README.md)
 > 详细解释 Maven 安装目录的文件分布。

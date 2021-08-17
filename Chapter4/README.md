@@ -68,13 +68,13 @@
 该用例倒没有设计非功能性需求，也没有详细定义用户界面，用例也不会告诉我们使用何种技术。关于该服务的安全性，你将会看到一些实际的措施，但我们不会过于深入；关于用户界面，下一小节会给出一个界面圆形；置于使用的技术，该项目会基于大家所熟知的 **Spring** 进一步开发。
 
 ## 2.2 界面原型
-![1.png](https://github.com/dellnoantechnp/mvnbook/blob/main/Chapter4/.pic/1.png)
+![1.png](https://raw.githubusercontent.com/dellnoantechnp/mvnbook/main/Chapter4/.pic/1.png)
 
 # 3. 简要设计
 ## 3.1 接口
 从需求用例中可以看到，系统对外的接口包括生成验证码图片、处理注册请求、激活账户以及处理登陆等。
 
-![2.png](https://github.com/dellnoantechnp/mvnbook/blob/main/Chapter4/.pic/2.png)
+![2.png](https://raw.githubusercontent.com/dellnoantechnp/mvnbook/main/Chapter4/.pic/2.png)
 
 首先需要解释的是`generateCaptchaKey()`和`generateCaptchaImage()`方法，对于`Captcha`的简单解释就是验证码。 每个`Captcha`都需要有一个key，根据这个key，系统才能得到对应的验证码图片以及实际值。 因此，`generateCaptchaKey()`会生成一个`Captcha key`，使用这个 key 再调用`generateImage()`方法就能得到验证码图片。 验证码的key以及验证码图片被传送到客户端，用户通过肉眼识别再输入验证码的值，伴随着key再传送到服务器端验证，服务器端就可以通过这个key查到正确的验证码值，并与客户端传过来的值进行对比验证。
 
@@ -86,7 +86,7 @@
 
 ## 3.2 模块结构
 定义了系统核心的几口之后，基于功能分割的方便复用的原则，再对系统进一步进行花粉。这里基于包名划分模块，这也是在 Java 中比较常见的做法。
-![3.png](https://github.com/dellnoantechnp/mvnbook/blob/main/Chapter4/.pic/3.png)
+![3.png](https://raw.githubusercontent.com/dellnoantechnp/mvnbook/main/Chapter4/.pic/3.png)
 
 现在逐个解释一下各个模块(包)的作用：
 
