@@ -40,7 +40,7 @@ public abstract class AbstractBuild {
 
 生命周期抽象了构建的各个步骤，定义了它们的次序，为了测试又写一堆代码，那不就成了大家在重复发明轮子吗 ？  Maven 当然必须考虑这一点，因此它设计了插件机制。 每个构建步骤都可以绑定一个或者多个插件行为，而且 Maven 为大多数构建步骤编写并绑定了默认插件。  例如，针对编译的插件有`maven-compiler-plugin`，针对测试的插件有`maven-surefire-plugin`等。  当用户有特殊需要的时候，也可配置插件定制构建行为，甚至自己编写插件。
 
-![507a68825d97bba74d29cb7fccf28110.png](evernotecid://AA1FF6BA-50E6-464F-AFE6-7DB5EB18310C/appyinxiangcom/14826466/ENResource/p4450)
+![1.png](https://raw.githubusercontent.com/dellnoantechnp/mvnbook/main/Chapter7/.pic/1.png)
 
 Maven 定义的生命周期和插件机制一方面保证了所有 Maven 项目有一致的构件标准，另一方面又通过默认插件简化和稳定了实际项目的构建。  此外，该机制还提供了足够的扩展空间，用户可以通过配置现有插件或者自行编写插件来自定义构建行为。
 
