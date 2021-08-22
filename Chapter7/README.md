@@ -113,4 +113,7 @@ Maven 定义的生命周期和插件机制一方面保证了所有 Maven 项目�
 
 对于插件本身，为了能复用代码，它往往能够完成多个任务。 例如`maven-dependency-plugin`，它能够基于项目依赖做很多事情。它能够分析项目依赖，帮助找出潜在的无用依赖；它能够列出项目的依赖树，帮助分析依赖来源；它能够列出项目所有已解析的依赖，等等。   为每个这样的功能编写一个独立的插件显然是不可取的，因为这些任务背后有很多可以复用的代码，因此，这些功能聚集在一个插件里，每个功能就是一个插件目标。
 
-`maven-dependency-plugin` 有十多个目标，每个目标对应了一个功能，上述提到的几个功能分别
+`maven-dependency-plugin` 有十多个目标，每个目标对应了一个功能，上述提到的几个功能分别为`dependency:analyze`、`dependency:tree` 和 `dependency:list`。 **这是一种通用的写法，冒号前面是插件前缀，冒号后面是该插件的目标。** 类似的，还可以写出`compiler:compile`(这是`maven-compiler-plugin`的`compile`目标)和`surefire:test`(这是`maven-surefire-plugin`的`test`目标)。
+                                                        
+# 4. 插件绑定
+Maven 的生命周期与插件相互绑定，用以完成实际的构建任务。 具体而言，是生命周期的阶段与插件的目标相互绑定，以完成某个具体的构建任务。
