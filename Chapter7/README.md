@@ -119,6 +119,7 @@ Maven 定义的生命周期和插件机制一方面保证了所有 Maven 项目�
 Maven 的生命周期与插件相互绑定，用以完成实际的构建任务。 具体而言，是生命周期的阶段与插件的目标相互绑定，以完成某个具体的构建任务。
 
 例如项目编译这一任务，它对应了`default`生命周期的`compile`这一阶段，而`maven-compiler-plugin`这一插件的`compile`目标能够完成该任务。因此，将它们绑定，就能实现项目编译的目的。
+
 ![2.png](https://raw.githubusercontent.com/dellnoantechnp/mvnbook/main/Chapter7/.pic/2.png)
 <center>生命周期阶段与插件目标绑定</center>
 
