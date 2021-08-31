@@ -26,11 +26,10 @@ public class AccountPersistServiceImpl implements AccountPersistService {
     public Account readAccount(String id) throws AccountPersistException {
         Document doc = readDocument();
         Element accountsEle = doc.getRootElement().element(ELEMENT_ACCOUNTS);
-        for(Element accountEle:(List<Element>)accountsEle.elements()){
-            if (accountEle.elementText(ELEMENT_ACCOUNT_ID).equals(id)){
+        for(Element accountEle : (List<Element>)accountsEle.elements())
+            if (accountEle.elementText(ELEMENT_ACCOUNT_ID).equals(id)) {
                 return buildAccount(accountEle);
             }
-        }
         return null;
     }
 
@@ -71,7 +70,7 @@ public class AccountPersistServiceImpl implements AccountPersistService {
         account.setName(element.elementText(ELEMENT_ACCOUNT_NAME));
         account.setEmail(element.elementText(ELEMENT_ACCOUNT_EMAIL));
         account.setPassword(element.elementText(ELEMENT_ACCOUNT_PASSWORD));
-        account.setActivated("true".equals(element.elementText(ELEMENT_ACCOUNT_ACTIVATED)) ? true : false);
+        account.setActivated("true".equals(element.elementText(ELEMENT_ACCOUNT_ACTIVATED)));
 
         return account;
     }
