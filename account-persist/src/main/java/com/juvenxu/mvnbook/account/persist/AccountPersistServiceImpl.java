@@ -111,6 +111,5 @@ public class AccountPersistServiceImpl implements AccountPersistService {
                 throw new AccountPersistException("Unable to close persist data xml file writer!", e);
             }
         }
-
     }
 }
