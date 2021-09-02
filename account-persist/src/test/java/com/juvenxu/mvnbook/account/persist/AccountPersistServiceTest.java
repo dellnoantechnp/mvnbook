@@ -41,7 +41,7 @@ public class AccountPersistServiceTest {
         assertNotNull(account);
         assertEquals("juven", account.getId());
         assertEquals("Juven Xu", account.getName());
-        assertEquals("juvenxu@changeme.com", account.getEmail());
+        assertEquals("juven@changeme.com", account.getEmail());
         assertEquals("this_should_be_encrypted", account.getPassword());
         assertTrue(account.isActivated());
 //        Assert.notNull(account);
