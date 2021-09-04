@@ -635,26 +635,26 @@ Maven 会首先解析聚合模块的 POM、分析要构建的模块、并计算�
 ## 3.2 可继承的 POM 元素
 上一小节看到，`groupId`和`version`是可以被继承的，那么还有哪些元素可以被继承呢？ 一下是一个完整的列表，并附带了简单的说明：
 
-[x] groupId: 项目组ID，项目坐标的核心元素。
-[x] version: 项目版本，项目坐标的核心元素。
-[x] description: 项目的描述信息。
-[x] organization: 项目的组织信息。
-[x] inceptionYear: 项目的创始年份。
-[x] url: 项目的 URL 地址。
-[x] developers: 项目的开发者信息。
-[x] contributors: 项目的贡献者信息。
-[x] destributionManagement: 项目的部署配置。
-[x] issueManagement: 项目的缺陷跟踪系统信息。
-[x] ciManagement: 项目的持续集成系统信息。
-[x] scm: 项目的版本控制系统信息。
-[x] mailingLists: 项目的邮件列表信息。
-[x] properties: 自定义的 Maven 属性。
-[x] dependencies: 项目的依赖配置。
-[x] dependencyManagement: 项目的依赖管理配置。
-[x] repositories: 项目的仓库配置。
-[x] build: 包括项目的源码目录配置、输出目录配置、插件配置、插件管理配置等。
-[x] reporting: 包括项目的报告输出目录配置、报告插件配置等。
-
+- [x] groupId: 项目组ID，项目坐标的核心元素。
+- [x] version: 项目版本，项目坐标的核心元素。
+- [x] description: 项目的描述信息。
+- [x] organization: 项目的组织信息。
+- [x] inceptionYear: 项目的创始年份。
+- [x] url: 项目的 URL 地址。
+- [x] developers: 项目的开发者信息。
+- [x] contributors: 项目的贡献者信息。
+- [x] destributionManagement: 项目的部署配置。
+- [x] issueManagement: 项目的缺陷跟踪系统信息。
+- [x] ciManagement: 项目的持续集成系统信息。
+- [x] scm: 项目的版本控制系统信息。
+- [x] mailingLists: 项目的邮件列表信息。
+- [x] properties: 自定义的 Maven 属性。
+- [x] dependencies: 项目的依赖配置。
+- [x] dependencyManagement: 项目的依赖管理配置。
+- [x] repositories: 项目的仓库配置。
+- [x] build: 包括项目的源码目录配置、输出目录配置、插件配置、插件管理配置等。
+- [x] reporting: 包括项目的报告输出目录配置、报告插件配置等。
+ 
 ## 3.3 依赖管理
 上述信息我们知道，也可以在父模块中配置`<dependencies>`依赖信息，但是并不推荐这样做。Maven 有提供更好的依赖继承管理。
 
@@ -1001,10 +1001,10 @@ Java 成功的重要原因之一就是它能屏蔽大部分操作系统的差异
 
 这段配置简单的令人惊奇，但为了获得这样简洁的配置，用户是需要付出一定的代价的，那就是遵循Maven的约定。 Maven会假设用户的项目是这样的：
 
-[x] 源码目录为`src/main/java/`
-[x] 编译输出目录为`target/classes/`
-[x] 打包方式和为 jar
-[x] 包输出目录为`target/`
+- [x] 源码目录为`src/main/java/`
+- [x] 编译输出目录为`target/classes/`
+- [x] 打包方式和为 jar
+- [x] 包输出目录为`target/`
 
 遵循约定虽然损失了一定的灵活性，用户不能随意安排目录结构，但是却能减少配置。 更重要的是，遵循约定能够帮助用户遵循构建标准。
 
@@ -1245,10 +1245,10 @@ Maven 设定核心插件版本的原因是放置由于插件版本的变化而�
 
 Maven 提供很多的命令行选项支持裁剪反应堆，输入`mvn -h`可以看到这些选项：
 
-[x]  -am,--also-make      If project list is specified, also build projects required by he list. 同时构建所列模块的依赖模块
-[x]  -amd,--also-make-dependents     If project list is specified, also build projects that depend on projects on the list. 同时构建依赖于所列模块的模块
-[x] -pl,--projects <arg>    Comma-delimited list of specified reactor projects to build instead of all projects. A project can be specified by [groupId]:artifactId or by its relative path. 构建指定的模块，模块间用逗号分隔
-[x] -rf,--resume-from <arg>     Resume reactor from specified project. 从指定的模块回复反应堆
+- [x] **`-am,--also-make`**        If project list is specified, also build projects required by he list. 同时构建所列模块的依赖模块
+- [x] **`-amd,--also-make-dependents`**     If project list is specified, also build projects that depend on projects on the list. 同时构建依赖于所列模块的模块
+- [x] **`-pl,--projects <arg>`**      Comma-delimited list of specified reactor projects to build instead of all projects. A project can be specified by [groupId]:artifactId or by its relative path. 构建指定的模块，模块间用逗号分隔
+- [x] **`-rf,--resume-from <arg>`**     Resume reactor from specified project. 从指定的模块回复反应堆
 
 举例来说：
 默认情况从`account-aggregator`执行`mvn clean install`会得到如下完整的反应堆：
