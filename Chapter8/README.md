@@ -480,7 +480,7 @@ APSHOT-sources.jar
 [INFO] --- maven-install-plugin:2.4:install (default-install) @ account-persist ---
 [INFO] Installing D:\ProjectWorkspace\****\mvnbook\account-persist\target\account-persist-1.0.0-SNAPSHOT.jar to C:\Users\****\repository\com\juvenxu\mvnbook\account\account-persist\1.0.0-SNAPSHOT\account-persist-1.0.0-SN
 APSHOT.jar
-[INFO] Installing D:\ProjectWorkspace\InteliJIDEA\mvnbook\account-persist\pom.xml to C:\Users\****\repository\com\juvenxu\mvnbook\account\account-persist\1.0.0-SNAPSHOT\account-persist-1.0.0-SNAPSHOT.pom
+[INFO] Installing D:\ProjectWorkspace\****\mvnbook\account-persist\pom.xml to C:\Users\****\repository\com\juvenxu\mvnbook\account\account-persist\1.0.0-SNAPSHOT\account-persist-1.0.0-SNAPSHOT.pom
 [INFO]
 [INFO] -----------< com.juvenxu.mvnbook.account:account-aggregator >-----------
 [INFO] Building Account Aggregator 1.0-SNAPSHOT                           [3/3]
