@@ -19,18 +19,19 @@ public class AccountPersistServiceImpl implements AccountPersistService {
     private static final String ELEMENT_ACCOUNT_PASSWORD = "password";
     private static final String ELEMENT_ACCOUNT_ACTIVATED = "activated";
 
-    private  String file;
+    private String file;
 
     private SAXReader reader = new SAXReader();
+    // readDocument() 会用到的对象
 
     public Account readAccount(String id) throws AccountPersistException {
         Document doc = readDocument();
-        Element accountsEle = doc.getRootElement().element(ELEMENT_ACCOUNTS);
-        for(Element accountEle : (List<Element>)accountsEle.elements())
-            if (accountEle.elementText(ELEMENT_ACCOUNT_ID).equals(id)) {
+        Element accountsEle = doc.getRootElement().element(ELEMENT_ACCOUNTS);   // 获取root根节点
+        for(Element accountEle : (List<Element>)accountsEle.elements())         // 迭代accounts节点下的所有项目
+            if (accountEle.elementText(ELEMENT_ACCOUNT_ID).equals(id)) {        // 根据传参对比，成功后返回该节点信息
                 return buildAccount(accountEle);
             }
-        return null;
+        return null;        // 否则返回空
     }
 
     public void createAccount(Account account) throws AccountPersistException {
@@ -63,7 +64,7 @@ public class AccountPersistServiceImpl implements AccountPersistService {
         this.file = file;
     }
 
-    private Account buildAccount(Element element) {
+    private Account buildAccount(Element element) {     // 生成账户节点标签
         Account account = new Account();
 
         account.setId(element.elementText(ELEMENT_ACCOUNT_ID));
@@ -77,35 +78,36 @@ public class AccountPersistServiceImpl implements AccountPersistService {
 
     private Document readDocument() throws AccountPersistException {
         File dataFile = new File(file);
+        // file 变量值通过 bean 配置注入
 
-        if (!dataFile.exists()){
-            dataFile.getParentFile().mkdirs();
-            Document doc = DocumentFactory.getInstance().createDocument();
-            Element rootEle = doc.addElement(ELEMENT_ROOT);
+        if (!dataFile.exists()){    // 校验文件是否存在，如果不存在，进入如下逻辑
+            dataFile.getParentFile().mkdirs();      // 创建上级路径
+            Document doc = DocumentFactory.getInstance().createDocument();  // 创建Document对象
+            Element rootEle = doc.addElement(ELEMENT_ROOT);     // xml 添加 root 节点，节点标签为 <account-persist>
             rootEle.addElement(ELEMENT_ACCOUNTS);
-            writeDocument(doc);
+            writeDocument(doc);         // Element对象写入xml文件中
         }
 
         try {
-            return reader.read(dataFile);
+            return reader.read(dataFile);       // 返回 xml 文件内容
         } catch (DocumentException e) {
             throw new AccountPersistException("Unable to read persist data xml file!", e);
         }
     }
 
     private void writeDocument(Document doc) throws AccountPersistException{
-        Writer out = null;
+        Writer out = null;      // 初始化 out 局部变量
 
         try {
-            out = new OutputStreamWriter(new FileOutputStream(file),"utf-8");
-            XMLWriter writer = new XMLWriter(out, OutputFormat.createPrettyPrint());
-            writer.write(doc);
+            out = new OutputStreamWriter(new FileOutputStream(file),"utf-8");   // OutputStreamWriter对象向上转型为Writer对象，私有变量file为SpringFramework注入值
+            XMLWriter writer = new XMLWriter(out, OutputFormat.createPrettyPrint());    // 输出格式为OutputFormat.createPrettyPrint()的友好结果
+            writer.write(doc);          // 写入xml文件
         } catch (IOException e) {
             throw new AccountPersistException("Unable to write persist data xml file!", e);
         } finally {
             try {
                 if (out != null){
-                    out.close();
+                    out.close();        // 关闭文件打开描述符
                 }
             } catch (IOException e) {
                 throw new AccountPersistException("Unable to close persist data xml file writer!", e);

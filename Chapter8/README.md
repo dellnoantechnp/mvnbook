@@ -232,7 +232,7 @@ private void writeDocument(Document doc) throws AccountPersistException{
 </account-persist>
 ```
 
-这个 XML 文件的根元素是`account-persist`，其下是`accounts`元素，`accounts`可以包含零个或者多个`account`元素，每个`account`元素代表一个账户，其子元素表示该账户的`id`、姓名、电子邮件、密码以及是否被激活等信息。
+这个 XML 文件的根元素是`<account-persist>`，其下是`<accounts>`元素，`<accounts>`可以包含零个或者多个`<account>`元素，每个`<account>`元素代表一个账户，其子元素表示该账户的`<id>`、姓名、电子邮件、密码以及是否被激活等信息。
 
 现在看一下`readAccount()`方法是如何从 XML 文档读取并构建 Account对象的：
 ```java
@@ -285,7 +285,7 @@ account-persist 的 Spring 配置文件：
 </beans>
 ```
 
-该配置文件首先配置了一个`id` 为`propertyConfigurer` 的 bean，其实现为`PropertyPlaceholderCOnfigurer`，作用是从项目`classpath`载入名为`account-service.properties`的配置文件。 
+该配置文件首先配置了一个`id` 为`propertyConfigurer` 的 bean，其实现为`PropertyPlaceholderConfigurer`，作用是从项目`classpath`载入名为`account-service.properties`的配置文件。 
 
 随后的 bean 是`accountPersistService`，实现为`AccountPersistServiceImpl`，同时这里使用属性`persist.file` 配置其 `file` 字段的值。 也就是说，XML 数据文档的位置是由项目 `classpath` 下 `account-service.properties` 文件中的`persist.file` 属性的值配置的。
 
@@ -297,9 +297,9 @@ account-persist 的 Spring 配置文件：
 persist.file=${project.build.testOutputDirectory}/persist-data.xml
 ```
 
-该文件只包含一个`persist.file` 属性，表示存储账户数据的文件路径，但是它的值并不是简单的文件路径，而是包含了`${project.build.testOutputDirectory}` 。 **这是一个 Maven 属性，这里读者暂时只要了解该属性表示了 Maven 的测试输出目录，其默认的地址为项目根目录下的 `target/test-classes` 文件夹。**  也就是说，在测试中使用测试输出目录下的`persist-data.xml` 文件存储账户数据。
+该文件只包含一个`persist.file` 属性，表示存储账户数据的文件路径，但是它的值并不是简单的文件路径，其值而是包含了`${project.build.testOutputDirectory}` 。 **这是一个 Maven 属性，这里读者暂时只要了解该属性表示了 Maven 的测试输出目录，其默认的地址为项目根目录下的 `target/test-classes` 文件夹。**  也就是说，在测试中使用测试输出目录下的`persist-data.xml` 文件存储账户数据。
 
-现在编写测试用例测试`AccountPersistService` 。这里重点关注`readAccount()` 方法。
+现在编写测试用例测试`AccountPersistService` 。这里重点关注`test_readAccount()` 方法。
 ```java
 package com.juvenxu.mvnbook.account.persist;
 
@@ -352,7 +352,7 @@ public class AccountPersistServiceTest {
 }
 ```
 
-该测试用例使用与`AccountPersistService`一致的包名，它有两个方法: `prepare()` 与 `testReadAccount()` 。前者使用了 `@Before` 注解，表示在执行测试用例之前执行该方法。 它首先检查数据文件是否存在，如果存在则删除以得到个干净的测试环境，接着使用`account-persist.xml`配置文件初始化 SpringFramework 的 IoC 容器，再从容器中获取要测试的`AccountPersistService` 对象。 最后`prepare()` 方法创建一个 `Account` 对象，设置对象字段的值之后，使用 `AccountPersistService` 的 `createAccount()` 方法将其持久化。
+该测试用例使用与`AccountPersistService`一致的包名，它有两个方法: `prepare()` 与 `test_readAccount()` 。前者使用了 `@Before` 注解，表示在执行测试用例之前执行该方法。 它首先检查数据文件是否存在，如果存在则删除以得到个干净的测试环境，接着使用`account-persist.xml`配置文件初始化 SpringFramework 的 IoC 容器，再从容器中获取要测试的`AccountPersistService` 对象。 最后`prepare()` 方法创建一个 `Account` 对象，设置对象字段的值之后，使用 `AccountPersistService` 的 `createAccount()` 方法将其持久化。
 
 使用`@Test`注解的 `testReadAccount()` 方法就是要测试的方法。 该方法非常简单，它根据 id 使用`AccountPersistService` 读取`Account` 对象，然后检查该对象不为空，并且每个字段的值必须与刚才插入的对象值完全一致，即可通过测试。
 

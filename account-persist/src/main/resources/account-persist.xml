@@ -5,6 +5,7 @@
     <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="location" value="classpath:account-service.properties"/>
     </bean>
+    <!-- 作用是从项目 classpath 载入名为 account-service.properties 的配置文件 -->
 
     <bean id="accountPersistService" class="com.juvenxu.mvnbook.account.persist.AccountPersistServiceImpl">
         <property name="file" value="${persist.file}"/>
