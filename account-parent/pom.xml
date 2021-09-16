@@ -13,6 +13,11 @@
     <packaging>pom</packaging>
     <name>Account Parent</name>
     <version>1.0.0-SNAPSHOT</version>
+    <modules>
+        <module>../account-email</module>
+        <module>../account-persist</module>
+        <module>../account-captcha</module>
+    </modules>
 
     <properties>
 <!--        <javax.mail.version>1.5.0-b01</javax.mail.version>-->
