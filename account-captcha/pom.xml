@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>account-parent</artifactId>
+        <groupId>com.juvenxu.mvnbook.account</groupId>
+        <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../account-parent/pom.xml</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>account-captcha</artifactId>
+    <name>Account Captcha</name>
+
+    <properties>
+        <kaptcha.version>2.3.2</kaptcha.version>
+    </properties>
+
+    <dependencies>
+        <!--<dependency>-->
+            <!--<groupId>com.google.code.kaptcha</groupId>-->
+            <!--<artifactId>kaptcha</artifactId>-->
+            <!--<version>${kaptcha.version}</version>-->
+            <!--<classifier>jdk15</classifier>-->
+        <!--</dependency>-->
+
+        <!-- https://mvnrepository.com/artifact/com.github.penggle/kaptcha -->
+        <dependency>
+            <groupId>com.github.penggle</groupId>
+            <artifactId>kaptcha</artifactId>
+            <version>${kaptcha.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+    </dependencies>
+
+    <!--<repositories>-->
+        <!--<repository>-->
+            <!--<id>sonatype-forge</id>-->
+            <!--<name>Sonatype Forge</name>-->
+            <!--<url>http://repository.sonatype.com/content/groups/forge/</url>-->
+            <!--<releases>-->
+                <!--<enabled>true</enabled>-->
+            <!--</releases>-->
+            <!--<snapshots>-->
+                <!--<enabled>false</enabled>-->
+            <!--</snapshots>-->
+        <!--</repository>-->
+    <!--</repositories>-->
+
+</project>
