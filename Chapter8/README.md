@@ -906,66 +906,70 @@ Maven 提供了`<dependencyManagement>`元素帮助管理依赖，类似地，Ma
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>Account Parent</name>
+
     <modules>
-    	<module>account-email</module>
-    	<module>account-persist</module>
+        <module>account-email</module>
+        <module>account-persist</module>
     </modules>
+
     <properties>
-    	<springframework.version>2.5.6</springframework.version>
-    	<junit.version>4.7</junit.version>
+        <springframework.version>2.5.6</springframework.version>
+        <junit.version>4.7</junit.version>
     </properties>
+
     <dependencyManagement>
-    	<dependencies>
-	        <dependency>
-	            <groupId>org.springframework</groupId>
-	            <artifactId>spring-core</artifactId>
-	            <!-- 引用属性定义的值 -->
-	            <version>${springframework.version}</version>
-	        </dependency>
-	        <dependency>
-	            <groupId>org.springframework</groupId>
-	            <artifactId>spring-beans</artifactId>
-	            <version>${springframework.version}</version>
-	        </dependency>
-	        <dependency>
-	            <groupId>org.springframework</groupId>
-	            <artifactId>spring-context</artifactId>
-	            <version>${springframework.version}</version>
-	        </dependency>
-	        <dependency>
-	            <groupId>org.springframework</groupId>
-	            <artifactId>spring-context-support</artifactId>
-	            <version>2.5.6</version>
-	        </dependency>
-	        <dependency>
-	            <groupId>junit</groupId>
-	            <artifactId>junit</artifactId>
-	            <version>${junit.version}</version>
-	            <scope>test</scope>
-	        </dependency>
-    	</dependencies>
-	</dependencyManagement>
-<build>
-	<pluginManagement>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<source>1.5</source>
-					<target>1.5</target>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-resources-plugin</artifactId>
-				<configuration>
-					<encoding>UTF-8</encoding>
-				</configuration>
-			</plugin>
-		</plugins>
-	</pluginManagement>
-</build>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-core</artifactId>
+                <!-- 引用属性定义的值 -->
+                <version>${springframework.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-beans</artifactId>
+                <version>${springframework.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context</artifactId>
+                <version>${springframework.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context-support</artifactId>
+                <version>2.5.6</version>
+            </dependency>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+                <scope>test</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <configuration>
+                        <source>1.5</source>
+                        <target>1.5</target>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <configuration>
+                        <encoding>UTF-8</encoding>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+</project>
 ```
 
 在该代码中可以看到，该POM的打包方式为`pom`，它包含了一个`<modules>`元素，表示用来聚合`account-persist`和`account-email`两个模块，它还包含了`properties`、`dependencyManagement`和`pluginManagement`元素供子模块继承。
