@@ -1,6 +1,7 @@
 package com.juvenxu.mvnbook.account.captcha;
 
-import org.junit.Test;
+//import org.junit.Test;
+import org.testng.annotations.Test;
 
 import java.util.HashSet;
 import java.util.Set;

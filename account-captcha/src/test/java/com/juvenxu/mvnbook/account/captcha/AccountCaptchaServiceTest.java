@@ -1,7 +1,9 @@
 package com.juvenxu.mvnbook.account.captcha;
 
-import org.junit.Before;
-import org.junit.Test;
+//import org.junit.Before;
+//import org.junit.Test;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -17,7 +19,7 @@ public class AccountCaptchaServiceTest {
 
     private AccountCaptchaService service;
 
-    @Before
+    @BeforeMethod
     public void prepare() throws Exception {
         ApplicationContext ctx = new ClassPathXmlApplicationContext("account-captcha.xml");
         service = (AccountCaptchaService) ctx.getBean("accountCaptchaService");
