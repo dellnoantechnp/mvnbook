@@ -9,6 +9,7 @@ import com.juvenxu.mvnbook.account.persist.Account;
 import com.juvenxu.mvnbook.account.persist.AccountPersistException;
 import com.juvenxu.mvnbook.account.persist.AccountPersistService;
 
+import javax.mail.MessagingException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -45,8 +46,7 @@ public class AccountServiceImpl implements AccountService {
         this.accountCaptchaService = accountCaptchaService;
     }
 
-    public byte[] generateCaptchaImage(String captchaKey)
-            throws AccountServiceException {
+    public byte[] generateCaptchaImage(String captchaKey) throws AccountServiceException {
         try {
             return accountCaptchaService.generateCaptchaImage(captchaKey);
         } catch (AccountCaptchaException e) {
@@ -54,8 +54,7 @@ public class AccountServiceImpl implements AccountService {
         }
     }
 
-    public String generateCaptchaKey()
-            throws AccountServiceException {
+    public String generateCaptchaKey() throws AccountServiceException {
         try {
             return accountCaptchaService.generateCaptchaKey();
         } catch (AccountCaptchaException e) {
@@ -63,8 +62,7 @@ public class AccountServiceImpl implements AccountService {
         }
     }
 
-    public void signUp(SignUpRequest signUpRequest)
-            throws AccountServiceException {
+    public void signUp(SignUpRequest signUpRequest) throws AccountServiceException {
         try {
             if (!signUpRequest.getPassword().equals(signUpRequest.getConfirmPassword())) {
                 throw new AccountServiceException("2 passwords do not match.");
@@ -91,13 +89,15 @@ public class AccountServiceImpl implements AccountService {
 
             String link = signUpRequest.getActivateServiceUrl().endsWith("/") ? signUpRequest.getActivateServiceUrl()
                     + activationId : signUpRequest.getActivateServiceUrl() + "?key=" + activationId;
-            accountEmailService.sendEmail(account.getEmail(), "Please Activate Your Account", link);
+            accountEmailService.sendMail(account.getEmail(), "Please Activate Your Account", link);
         } catch (AccountCaptchaException e) {
             throw new AccountServiceException("Unable to validate captcha.", e);
         } catch (AccountPersistException e) {
             throw new AccountServiceException("Unable to create account.", e);
         } catch (AccountEmailException e) {
             throw new AccountServiceException("Unable to send actiavtion mail.", e);
+        } catch (MessagingException e) {
+            e.printStackTrace();
         }
 
     }
